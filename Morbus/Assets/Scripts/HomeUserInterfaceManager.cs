@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HomeUserInterfaceManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class HomeUserInterfaceManager : MonoBehaviour
     public GameObject PanelHowToPlay;
     public GameObject PanelSettings;
 
+    public Button LoadGameButton;
+
     private void Awake()
     {
         PanelMenu.SetActive(true);
@@ -17,16 +20,22 @@ public class HomeUserInterfaceManager : MonoBehaviour
         PanelSettings.SetActive(false);
     }
 
+    private void Start()
+    {
+        if (SaveAndLoadSystemManager.SLSM.GameData == null || SaveAndLoadSystemManager.SLSM.GameData.Level == 0)
+            LoadGameButton.interactable = false;
+    }
+
     public void StartGame()
     {
-        // Resetirati sve podatke u GameManager-u (za svaki slučaj) i pokrenuti scenu s
-        // indeksom 1.
+        GameManager.GM.StartGame();
+        SceneManager.LoadScene(1);
     }
 
     public void LoadGame()
     {
-        // Otvoriti izbornik za izbor save-a ili odmah dohvatiti podatke u GameManager-u
-        // i pokrenuti odgovarajuću scenu.
+        GameManager.GM.LoadGame();
+        SceneManager.LoadScene(SaveAndLoadSystemManager.SLSM.GameData.Level);
     }
 
     public void OpenHowToPlay()
