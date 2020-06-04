@@ -62,4 +62,11 @@ public class GameManager : MonoBehaviour
         _data.Level = level;
     }
 
+    // Pozivati kada se dodavaju nove mjere. Neka se uvijek šalju sve aktivne mjere za svaki slučaj.
+    // Ne mora nužno argument biti lista.
+    public void UpdateMeasures(List<int> measures)
+    {
+        _data.Measures = measures.ToArray();
+    }
+
 }

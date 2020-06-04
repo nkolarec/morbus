@@ -6,18 +6,17 @@ using UnityEngine.AI;
 public class PersonController : MonoBehaviour
 {
 
-    public Vector3 BuildingEntryPoint;
-    public Vector3 BuildingExitPoint;
-    public Vector3 SceneExitPoint;
+    public GameObject DistanceKeeper;
 
     private NavMeshAgent _agent;
     private List<Vector3> _destinations = new List<Vector3>();
     private int _index;
 
+    private bool _checkout;
     private bool _waiting;
     private float _timer;
 
-    private void Awake()
+    private void Start()
     {
         CreateDestinationsList();
         _agent = GetComponent<NavMeshAgent>();
@@ -26,6 +25,9 @@ public class PersonController : MonoBehaviour
 
     private void Update()
     {
+
+        if (_checkout)
+            return;
         
         if (_waiting)
         {
@@ -41,15 +43,11 @@ public class PersonController : MonoBehaviour
 
         }
 
-        if (_agent.remainingDistance <= 0.05f)
+        if (_agent.remainingDistance <= 0.5f)
         {
 
             _waiting = true;
-            // Promijeniti u nešto smisleno, 
-            // npr. da na nekim pozicijama poput 
-            // pozicije polica ili blagajne čeka 
-            // neko vrijeme.
-            _timer = 0;
+            _timer = (_index > 0 && _index < _destinations.Count - 3) ? Random.Range(1.0f, 2.5f) : 0;
             _index++;
             _agent.isStopped = true;
 
@@ -62,18 +60,19 @@ public class PersonController : MonoBehaviour
 
     private void CreateDestinationsList()
     {
+        foreach (Vector3 destination in LevelManager.LM.GetPoints(Random.Range(1, LevelManager.LM.NumberOfPoints)))
+            _destinations.Add(destination);
+    }
 
-        _destinations.Add(BuildingEntryPoint);
+    public void CheckoutEnd()
+    {
+        _checkout = false;
+    }
 
-        // Izvući točke unutar prostorije 
-        //iz neke posebne skripte or something.
-        _destinations.Add(new Vector3(-25, 1, 10));
-        _destinations.Add(new Vector3(25, 1, 0));
-        _destinations.Add(new Vector3(-35, 1, -20));
-
-        _destinations.Add(BuildingExitPoint);
-        _destinations.Add(SceneExitPoint);
-
+    public void CheckoutStart()
+    {
+        _agent.isStopped = true;
+        _checkout = true;
     }
 
 }
