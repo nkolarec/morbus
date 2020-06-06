@@ -20,15 +20,32 @@ public class PersonSpawner : MonoBehaviour
     private List<int> _indexesOfInfectedPeople = new List<int>();
     private int _numberOfPeople;
 
+    private bool _distance;
+    private bool _mask;
+    private float _percentage;
+
+    private float _distanceRadius;
+    private float _spreadRadius;
+
     private float _timer;
+
+    private bool _spawn = true;
 
     private void Start()
     {
 
-        // Iz GameManager-a izvući listu svih aktivnih mjera i prema njima odrediti koliko dodatnih
-        // zaraženih ljudi treba dodati, trebaju li osobe držati razmak i koliko, itd.
+        _distance = false;
+        _mask = false;
+        _percentage = 0.25f;
 
-        while (_indexesOfInfectedPeople.Count <= LevelManager.LM.NumberOfInfectedPeopleInLevel)
+        _distanceRadius = Constants.RADIUS_NO_DISTANCE;
+        _spreadRadius = Constants.RADIUS_CORONA_NO_MASK;
+
+        // Iz GameManager-a izvući listu svih aktivnih mjera i prema njima odrediti koliko dodatnih
+        // zaraženih ljudi treba dodati, trebaju li osobe držati razmak i koliko, itd. Prema tome
+        // mijenjati vrijednosti.
+
+        while (_indexesOfInfectedPeople.Count < LevelManager.LM.NumberOfInfectedPeopleInLevel)
         {
             int index = Random.Range(0, LevelManager.LM.NumberOfPeopleInLevel);
             if (_indexesOfInfectedPeople.Contains(index) == false)
@@ -39,6 +56,9 @@ public class PersonSpawner : MonoBehaviour
 
     private void Update()
     {
+
+        if (_spawn == false)
+            return;
 
         _timer -= Time.deltaTime;
 
@@ -55,8 +75,9 @@ public class PersonSpawner : MonoBehaviour
 
         Vector3 position = new Vector3(Random.Range(SpawnArea.x, SpawnArea.x + SpawnArea.width), SpawnAreaHeight, Random.Range(SpawnArea.y, SpawnArea.y + SpawnArea.height));
         GameObject person = Instantiate(PersonPrefab, position, Quaternion.identity, PersonParent.transform);
-        person.GetComponentInChildren<CoronaController>().Initialize(_indexesOfInfectedPeople.Contains(_numberOfPeople) ? true : false);
-        person.GetComponent<PersonController>().DistanceKeeper.GetComponent<SphereCollider>().radius = Constants.RADIUS_NO_DISTANCE;
+        person.GetComponentInChildren<CoronaController>().Initialize(_indexesOfInfectedPeople.Contains(_numberOfPeople) ? true : false, _percentage, _distance, _mask);
+        person.GetComponentInChildren<CoronaController>().transform.localScale = new Vector3(_spreadRadius, 0.005f, _spreadRadius);
+        person.GetComponent<PersonController>().DistanceKeeper.GetComponent<SphereCollider>().radius = _distanceRadius;
 
         // Dodati dodatne uvjete za CoronaController (nosi li osoba masku, dezinficira li ruke), a za radius isto postaviti vrijednost u ovisnosti o
         // aktivnim mjerama.
@@ -64,7 +85,7 @@ public class PersonSpawner : MonoBehaviour
         _numberOfPeople++;
 
         if (_numberOfPeople == LevelManager.LM.NumberOfPeopleInLevel)
-            Destroy(this);
+            _spawn = false;
 
     }
 

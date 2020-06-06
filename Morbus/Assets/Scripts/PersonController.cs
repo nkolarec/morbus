@@ -28,6 +28,14 @@ public class PersonController : MonoBehaviour
 
         if (_checkout)
             return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _waiting = false;
+            _agent.SetDestination(_destinations[_index]);
+            _agent.isStopped = false;
+            return;
+        }
         
         if (_waiting)
         {
@@ -47,7 +55,7 @@ public class PersonController : MonoBehaviour
         {
 
             _waiting = true;
-            _timer = (_index > 0 && _index < _destinations.Count - 3) ? Random.Range(1.0f, 2.5f) : 0;
+            _timer = (_index > 0 && _index < _destinations.Count - 4) ? Random.Range(1.0f, 2.5f) : 0.05f;
             _index++;
             _agent.isStopped = true;
 
@@ -66,6 +74,7 @@ public class PersonController : MonoBehaviour
 
     public void CheckoutEnd()
     {
+        _agent.isStopped = false;
         _checkout = false;
     }
 

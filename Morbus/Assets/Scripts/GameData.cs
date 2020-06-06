@@ -7,15 +7,20 @@ using UnityEngine;
 public class GameData
 {
 
-    public int Level;
+    public int Level = 1;
     public int[] Measures;
+
+    public int TotalPeople;
+    public int TotalPeopleInfected;
 
     public GameData() { }
 
-    public GameData(int level, int[] measures)
+    public GameData(int level, int[] measures, int total, int totalInfected)
     {
         Level = level;
         Measures = measures;
+        TotalPeople = total;
+        TotalPeopleInfected = totalInfected;
     }
 
 }

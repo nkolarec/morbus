@@ -10,4 +10,9 @@ public static class Constants
     public const float RADIUS_DISTANCE_2M = 1.5f;
     public const float RADIUS_DISTANCE_3M = 2.0f;
 
+    public const float RADIUS_CORONA_NO_MASK = 5;
+    public const float RADIUS_CORONA_MASK = 2;
+
+    public const float PERCENTAGE = 0.5f;
+
 }
