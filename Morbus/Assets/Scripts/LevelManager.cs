@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
 
     #endregion
 
+    public LevelUserInterfaceManager luim;
+
     public int NumberOfPoints
     {
         get
@@ -118,6 +120,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Didn't have the mask: " + Stats["WITHOUT_MASK"]);
         Debug.Log("Didn't keep the distance: " + Stats["WITHOUT_DISTANCE"]);
         Debug.Log("Didn't keep the distance and didn't have a mask: " + Stats["WITHOUT_BOTH"]);
+        luim.ShowNumbers(_numberOfPeopleExposed, _numberOfPeopleNewlyInfected, Stats);
     }
 
     public List<Vector3> GetPoints(int number)

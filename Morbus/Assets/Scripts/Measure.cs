@@ -209,6 +209,7 @@ public class Measure
                     measures.Remove(chosenNumber);
                 }
             }
+            i--;
         }
         return activeMeasures;
     }
