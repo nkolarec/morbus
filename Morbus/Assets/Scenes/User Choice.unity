@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 266317945}
   - component: {fileID: 266317944}
   m_Layer: 5
-  m_Name: 'Text: Cons'
+  m_Name: 'Text: Cons 3'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 406474928}
   - component: {fileID: 406474927}
   m_Layer: 5
-  m_Name: 'Text: Description'
+  m_Name: 'Text: Description 1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 469177665}
   - component: {fileID: 469177664}
   m_Layer: 5
-  m_Name: 'Text: Measure Name'
+  m_Name: 'Text: Measure Name 3'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 663598238}
   - component: {fileID: 663598237}
   m_Layer: 5
-  m_Name: 'Text: Pros'
+  m_Name: 'Text: Pros 2'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -945,7 +945,7 @@ GameObject:
   - component: {fileID: 742338072}
   - component: {fileID: 742338071}
   m_Layer: 5
-  m_Name: 'Text: Cons'
+  m_Name: 'Text: Cons 2'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 828274201}
   - component: {fileID: 828274200}
   m_Layer: 5
-  m_Name: 'Text: Measure Name'
+  m_Name: 'Text: Measure Name 2'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 872497741}
   - component: {fileID: 872497740}
   m_Layer: 5
-  m_Name: 'Text: Cons'
+  m_Name: 'Text: Cons 1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1340,7 +1340,7 @@ GameObject:
   - component: {fileID: 1199141333}
   - component: {fileID: 1199141332}
   m_Layer: 5
-  m_Name: 'Text: Description'
+  m_Name: 'Text: Description 3'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1418,7 +1418,7 @@ GameObject:
   - component: {fileID: 1292734310}
   - component: {fileID: 1292734309}
   m_Layer: 5
-  m_Name: 'Text: Measure Name'
+  m_Name: 'Text: Measure Name 1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1496,7 +1496,7 @@ GameObject:
   - component: {fileID: 1351766036}
   - component: {fileID: 1351766035}
   m_Layer: 5
-  m_Name: 'Text: Pros'
+  m_Name: 'Text: Pros 3'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1651,7 +1651,7 @@ GameObject:
   - component: {fileID: 1584924312}
   - component: {fileID: 1584924311}
   m_Layer: 5
-  m_Name: 'Text: Pros'
+  m_Name: 'Text: Pros 1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1873,6 +1873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1712683424}
+  - component: {fileID: 1712683425}
   m_Layer: 0
   m_Name: User Interface Manager
   m_TagString: Untagged
@@ -1894,6 +1895,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1712683425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712683423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d74865815ac50948b150d10ceb55eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeasureName1: {fileID: 1292734309}
+  MeasureDescription1: {fileID: 406474927}
+  MeasurePros1: {fileID: 1584924311}
+  MeasureCons1: {fileID: 872497740}
+  MeasureName2: {fileID: 828274200}
+  MeasureDescription2: {fileID: 2067551534}
+  MeasurePros2: {fileID: 663598237}
+  MeasureCons2: {fileID: 742338071}
+  MeasureName3: {fileID: 469177664}
+  MeasureDescription3: {fileID: 1199141332}
+  MeasurePros3: {fileID: 1351766035}
+  MeasureCons3: {fileID: 266317944}
 --- !u!1 &1750398815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2365,7 @@ GameObject:
   - component: {fileID: 2067551535}
   - component: {fileID: 2067551534}
   m_Layer: 5
-  m_Name: 'Text: Description'
+  m_Name: 'Text: Description 2'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
