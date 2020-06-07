@@ -21,6 +21,14 @@ public class ChoiceUserInterfaceManager : MonoBehaviour
     public Text MeasurePros3;
     public Text MeasureCons3;
 
+    public Text NextLevelRequirements;
+
+    public Button Measure1;
+    public Button Measure2;
+    public Button Measure3;
+
+    private Measure chosenMeasure;
+
     public List<Measure> activeMeasures;
 
     //TODO: treba promijeniti u manageru da se globalno savea, kad se dvaput ide naprijed-nazad (exit to menu se dvaput ide i start pa me baci na user choice) Unity se zmrzne
@@ -44,5 +52,21 @@ public class ChoiceUserInterfaceManager : MonoBehaviour
         MeasureDescription3.text = activeMeasures[2].Description;
         MeasurePros3.text = activeMeasures[2].Pros;
         MeasureCons3.text = activeMeasures[2].Cons;
+
+        NextLevelRequirements.text = "WARNING: People will be obliged to wear masks.";
+
+        Measure1.onClick.AddListener(() => SetChosenMeasure(activeMeasures[0]));
+        Measure2.onClick.AddListener(() => SetChosenMeasure(activeMeasures[1]));
+        Measure3.onClick.AddListener(() => SetChosenMeasure(activeMeasures[2]));
+    }
+
+    public void SetChosenMeasure(Measure measure)
+    {
+        chosenMeasure = measure;
+    }
+
+    public Measure GetChosenMeasure()
+    {
+        return chosenMeasure;
     }
 }
