@@ -21,11 +21,6 @@ public class Fader : MonoBehaviour
         }
        
     }
-    // can ignore the update, it's just to make the coroutines get called for example
-    void Update()
-    {
-
-    }
 
 
 
