@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class Measure
 {
@@ -197,10 +198,10 @@ public class Measure
         var activeMeasures = new List<Measure>();
         var rand = new Random();
         var i = 3;
-        while (i > 0)
+        while (i > 0 && measures.Count != 0)
         {
             var chosenNumber = rand.Next(1, 5);
-            if ((types.Count == 0 || !types.Contains(chosenNumber)) && measures.ContainsKey(chosenNumber))
+            if ((!types.Contains(chosenNumber)) && measures.ContainsKey(chosenNumber))
             {
                 activeMeasures.Add(measures[chosenNumber][0]);
                 measures[chosenNumber].RemoveAt(0);
@@ -208,8 +209,9 @@ public class Measure
                 {
                     measures.Remove(chosenNumber);
                 }
+                types.Add(chosenNumber);
+                i--;
             }
-            i--;
         }
         return activeMeasures;
     }
