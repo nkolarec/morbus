@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChoiceUserInterfaceManager : MonoBehaviour
@@ -58,6 +59,7 @@ public class ChoiceUserInterfaceManager : MonoBehaviour
         Measure1.onClick.AddListener(() => SetChosenMeasure(activeMeasures[0]));
         Measure2.onClick.AddListener(() => SetChosenMeasure(activeMeasures[1]));
         Measure3.onClick.AddListener(() => SetChosenMeasure(activeMeasures[2]));
+
     }
 
     public void SetChosenMeasure(Measure measure)
@@ -69,4 +71,18 @@ public class ChoiceUserInterfaceManager : MonoBehaviour
     {
         return chosenMeasure;
     }
+
+    public void GoToLevel()
+    {
+        List<int> measures = GameManager.GM.ActiveMeasures;
+        measures.Add(chosenMeasure.Identifier);
+        GameManager.GM.UpdateMeasures(measures);
+        GameManager.GM.GoToLevel();
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }

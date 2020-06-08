@@ -12,6 +12,8 @@ public class Measure
     public float Radius { get; set; }
     public float Happiness { get; set; }
     public int PeopleNumber { get; set; }
+    public int Identifier { get; set; }
+    public int Mask { get; set; }
 
     public static Dictionary<int, List<Measure>> measures = new Dictionary<int, List<Measure>>()
     {
@@ -26,7 +28,9 @@ public class Measure
                     InfectionPercentage=0f,
                     Radius=1f,
                     Happiness=0f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 1,
+                    Mask = 0
                 },
                 new Measure {
                     Name="Social Distancing",
@@ -36,7 +40,9 @@ public class Measure
                     InfectionPercentage=0f,
                     Radius=2f,
                     Happiness=-0.05f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 2,
+                    Mask = 0
                 },
                 new Measure {
                     Name="Social Distancing",
@@ -46,7 +52,9 @@ public class Measure
                     InfectionPercentage=0f,
                     Radius=3f,
                     Happiness=-0.1f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 3,
+                    Mask = 0
                 }
             }
         },
@@ -61,7 +69,9 @@ public class Measure
                     InfectionPercentage=-0.05f,
                     Radius=1f,
                     Happiness=-0.1f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 4,
+                    Mask = 1
                 },
                 new Measure {
                     Name="Masks",
@@ -71,7 +81,9 @@ public class Measure
                     InfectionPercentage=-0.1f,
                     Radius=2f,
                     Happiness=-0.2f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 5,
+                    Mask = 2
                 },
                 new Measure {
                     Name="Fully equipped",
@@ -81,7 +93,9 @@ public class Measure
                     InfectionPercentage=-0.2f,
                     Radius=3f,
                     Happiness=-0.3f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 6,
+                    Mask = 2
                 }
             }
         },
@@ -96,7 +110,9 @@ public class Measure
                     InfectionPercentage=-0.05f,
                     Radius=0f,
                     Happiness=0f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 7,
+                    Mask = 0
                 },
                 new Measure {
                     Name="Wash your hands!",
@@ -106,7 +122,9 @@ public class Measure
                     InfectionPercentage=-0.1f,
                     Radius=0f,
                     Happiness=-0.05f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 8,
+                    Mask = 0
                 },
                 new Measure {
                     Name="Sanitize",
@@ -116,7 +134,9 @@ public class Measure
                     InfectionPercentage=-0.2f,
                     Radius=0f,
                     Happiness=-0.1f,
-                    PeopleNumber=0
+                    PeopleNumber=0,
+                    Identifier = 9,
+                    Mask = 0
                 }
             }
  
@@ -132,7 +152,9 @@ public class Measure
                     InfectionPercentage=-0.05f,
                     Radius=0f,
                     Happiness=-0.15f,
-                    PeopleNumber=-3
+                    PeopleNumber=-3,
+                    Identifier = 10,
+                    Mask = 0
                },
                 new Measure {
                     Name="#stayathome",
@@ -142,7 +164,9 @@ public class Measure
                     InfectionPercentage=0.1f,
                     Radius=0f,
                     Happiness=-0.3f,
-                    PeopleNumber=-5
+                    PeopleNumber=-5,
+                    Identifier = 11,
+                    Mask = 0
                },
                 new Measure {
                     Name="Isolation",
@@ -152,7 +176,9 @@ public class Measure
                     InfectionPercentage=-0.25f,
                     Radius=0f,
                     Happiness=-0.4f,
-                    PeopleNumber=-7
+                    PeopleNumber=-7,
+                    Identifier = 12,
+                    Mask = 0
                 }
             }
         },
@@ -167,7 +193,9 @@ public class Measure
                     InfectionPercentage=-0.05f,
                     Radius=0f,
                     Happiness=0f,
-                    PeopleNumber=2
+                    PeopleNumber=2,
+                    Identifier = 13,
+                    Mask = 0
                }, 
                new Measure {
                     Name="Clean it up!",
@@ -177,7 +205,9 @@ public class Measure
                     InfectionPercentage=-0.1f,
                     Radius=0f,
                     Happiness=0f,
-                    PeopleNumber=3
+                    PeopleNumber=3,
+                    Identifier = 14,
+                    Mask = 0
                },
                new Measure {
                     Name="Cristal clear",
@@ -187,7 +217,9 @@ public class Measure
                     InfectionPercentage=-0.05f,
                     Radius=0f,
                     Happiness=0f,
-                    PeopleNumber=5
+                    PeopleNumber=5,
+                    Identifier = 15,
+                    Mask = 0
                }
            }
         }
@@ -215,5 +247,209 @@ public class Measure
         }
         return activeMeasures;
     }
+
+    public static List<Measure> GetAllMeasuresInAList()
+    {
+
+        List<Measure> measuresList = new List<Measure>();
+        measuresList.Add(new Measure
+        {
+            Name = "Cristal clear",
+            Description = "Workers must completely sanitize their workspace and products.",
+            Pros = "Infection will be reduced by 10%.",
+            Cons = "5 more people will come.",
+            InfectionPercentage = -0.05f,
+            Radius = 0f,
+            Happiness = 0f,
+            PeopleNumber = 5,
+            Identifier = 15,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Clean it up!",
+            Description = "Workers have to to clean their workspace after every product usage.",
+            Pros = "Infection will be reduced by 10%.",
+            Cons = "3 more people will come.",
+            InfectionPercentage = -0.1f,
+            Radius = 0f,
+            Happiness = 0f,
+            PeopleNumber = 3,
+            Identifier = 14,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Clean it up!",
+            Description = "Workers have to clean their workspace after every workday.",
+            Pros = "Infection will be reduced by 5%.",
+            Cons = "Two more people will come.",
+            InfectionPercentage = -0.05f,
+            Radius = 0f,
+            Happiness = 0f,
+            PeopleNumber = 2,
+            Identifier = 13,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Isolation",
+            Description = "People must completely isolate at home if they are infected.",
+            Pros = "Infection will be reduced by 25% and 7 people less will come.",
+            Cons = "Happiness will drop by 40%.",
+            InfectionPercentage = -0.25f,
+            Radius = 0f,
+            Happiness = -0.4f,
+            PeopleNumber = -7,
+            Identifier = 12,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "#stayathome",
+            Description = "People are OBLIGED to stay at home.",
+            Pros = "Infection will be reduced by 10% and 5 people less will come.",
+            Cons = "Happiness will drop by 30%.",
+            InfectionPercentage = 0.1f,
+            Radius = 0f,
+            Happiness = -0.3f,
+            PeopleNumber = -5,
+            Identifier = 11,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "#stayathome",
+            Description = "People are RECOMMENDED to stay at home.",
+            Pros = "Infection will be reduced by 5% and 3 people less will come.",
+            Cons = "Happiness will drop by 10%.",
+            InfectionPercentage = -0.05f,
+            Radius = 0f,
+            Happiness = -0.15f,
+            PeopleNumber = -3,
+            Identifier = 10,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Sanitize",
+            Description = "People are OBLIGED to wash hands and use sanitary products.",
+            Pros = "Infection will be reduced by 20%",
+            Cons = "People will not be social distancing and their happiness will drop by 10%.",
+            InfectionPercentage = -0.2f,
+            Radius = 0f,
+            Happiness = -0.1f,
+            PeopleNumber = 0,
+            Identifier = 9,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Wash your hands!",
+            Description = "People are OBLIGED to wash hands.",
+            Pros = "Infection will be reduced by 10%",
+            Cons = "People will not be social distancing and their happiness will drop by 5%.",
+            InfectionPercentage = -0.1f,
+            Radius = 0f,
+            Happiness = -0.05f,
+            PeopleNumber = 0,
+            Identifier = 8,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Wash your hands!",
+            Description = "People are RECOMMENDED to wash hands.",
+            Pros = "Infection will be reduced by 5%",
+            Cons = "People will not be social distancing.",
+            InfectionPercentage = -0.05f,
+            Radius = 0f,
+            Happiness = 0f,
+            PeopleNumber = 0,
+            Identifier = 7,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Fully equipped",
+            Description = "People are OBLIGED to wear masks and gloves.",
+            Pros = "Infection will be reduced by 20% and radius will be expanded to 3m.",
+            Cons = "People's appiness will drop by 30%.",
+            InfectionPercentage = -0.2f,
+            Radius = 3f,
+            Happiness = -0.3f,
+            PeopleNumber = 0,
+            Identifier = 6,
+            Mask = 2
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Masks",
+            Description = "People are OBLIGED to wear masks.",
+            Pros = "Infection will be reduced by 10% and radius will be expanded to 2m.",
+            Cons = "People's happiness will drop by 20%.",
+            InfectionPercentage = -0.1f,
+            Radius = 2f,
+            Happiness = -0.2f,
+            PeopleNumber = 0,
+            Identifier = 5,
+            Mask = 2
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Masks",
+            Description = "People are RECOMMENDED to wear masks.",
+            Pros = "Infection will be reduced by 5% and radius will be expanded to 1m.",
+            Cons = "People's happiness will drop by 10%.",
+            InfectionPercentage = -0.05f,
+            Radius = 1f,
+            Happiness = -0.1f,
+            PeopleNumber = 0,
+            Identifier = 4,
+            Mask = 1
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Social Distancing",
+            Description = "People must be 3m apart.",
+            Pros = "Radius of contact will be expanded to 3m.",
+            Cons = "People's happiness will drop by 10%",
+            InfectionPercentage = 0f,
+            Radius = 3f,
+            Happiness = -0.1f,
+            PeopleNumber = 0,
+            Identifier = 3,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Social Distancing",
+            Description = "People must be 2m apart.",
+            Pros = "Radius of contact will be expanded to 2m.",
+            Cons = "People's happiness will drop by 5%",
+            InfectionPercentage = 0f,
+            Radius = 2f,
+            Happiness = -0.05f,
+            PeopleNumber = 0,
+            Identifier = 2,
+            Mask = 0
+        });
+        measuresList.Add(new Measure
+        {
+            Name = "Social Distancing",
+            Description = "People must be 1m apart.",
+            Pros = "Radius of contact will be expanded to 1m.",
+            Cons = "There are no consequences.",
+            InfectionPercentage = 0f,
+            Radius = 1f,
+            Happiness = 0f,
+            PeopleNumber = 0,
+            Identifier = 1,
+            Mask = 0
+        });
+        return measuresList;
+
+    }
+
 }
 

@@ -68,7 +68,7 @@ public class PersonController : MonoBehaviour
 
     private void CreateDestinationsList()
     {
-        foreach (Vector3 destination in LevelManager.LM.GetPoints(Random.Range(1, LevelManager.LM.NumberOfPoints)))
+        foreach (Vector3 destination in LevelManager.LM.GetPoints(Random.Range(1, (int)LevelManager.LM.NumberOfPoints / 2)))
             _destinations.Add(destination);
     }
 

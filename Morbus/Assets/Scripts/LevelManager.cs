@@ -54,6 +54,8 @@ public class LevelManager : MonoBehaviour
     private int _numberOfPeopleNewlyInfected;
     private int _numberOfPeopleDestroyed;
 
+    private int _numberOfPeople;
+
     private void Awake()
     {
 
@@ -67,6 +69,8 @@ public class LevelManager : MonoBehaviour
 
         GameManager.GM.UpdateLevel(SceneManager.GetActiveScene().buildIndex);
         GameManager.GM.SaveGame();
+
+        _numberOfPeople = NumberOfPeopleInLevel;
 
     }
 
@@ -103,7 +107,7 @@ public class LevelManager : MonoBehaviour
 
         }
 
-        if (_numberOfPeopleDestroyed == NumberOfPeopleInLevel)
+        if (_numberOfPeopleDestroyed == _numberOfPeople)
         {
             GameManager.GM.UpdateTotalPeople(NumberOfPeopleInLevel, _numberOfPeopleNewlyInfected);
             ShowStats();
@@ -144,6 +148,11 @@ public class LevelManager : MonoBehaviour
 
         return resultPoints;
 
+    }
+
+    public void UpdateNumberOfPeople(int number)
+    {
+        _numberOfPeople = number;
     }
 
 }

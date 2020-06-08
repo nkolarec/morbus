@@ -24,7 +24,6 @@ public class ImageFader : MonoBehaviour
     }
 
 
-
     public IEnumerator FadeTextToFullAlpha(float t, Image i)
     {
 

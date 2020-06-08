@@ -8,7 +8,7 @@ public class GameData
 {
 
     public int Level = 1;
-    public int[] Measures;
+    public int[] Measures = new int[0];
 
     public int TotalPeople;
     public int TotalPeopleInfected;

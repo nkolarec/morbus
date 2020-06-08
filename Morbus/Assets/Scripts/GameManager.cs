@@ -22,6 +22,18 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    public List<int> ActiveMeasures
+    {
+        get
+        {
+            List<int> measures = new List<int>();
+            if (_data != null && _data.Measures.Length > 0)
+                for (int index = 0; index < _data.Measures.Length; index++)
+                    measures.Add(_data.Measures[index]);
+            return measures;
+        }
+    }
+
     private GameData _data;
 
     private void Awake()
@@ -104,6 +116,13 @@ public class GameManager : MonoBehaviour
     public void TimeSpeedUp(float value)
     {
         Time.timeScale = 1 + value;
+    }
+
+    public bool DidLose()
+    {
+        if (_data == null)
+            return false;
+        return _data.TotalPeopleInfected * 2 > _data.TotalPeople;
     }
 
 }
